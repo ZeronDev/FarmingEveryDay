@@ -2,25 +2,25 @@ import datetime
 import schedule
 import time
 import os
+# from keep_alive import keep_alive
 
 counter = 0
 
-def farm():
-    date = datetime.datetime.now()
+def job():
+  global counter
+  date = datetime.datetime.now()
 
-    with open("./README.md", "a") as readme:
-        readme.write(f"{date.year}년 {date.month}월 {date.day}일 ({counter}일째)")
+  with open("./README.md", "a") as readme:
+      readme.write(f"Commit bot lol {counter}\n\n")
 
-    os.system("git add README.md")
-    os.system(f"git commit -m \"{date.year}/{date.month}/{date.day}\"")
-    os.system(f"git push origin main")
+  os.system("git add README.md")
+  os.system(f"git commit -m \"{date.year}/{date.month}/{date.day}\"")
+  os.system("git push origin main")
     
-    counter += 1
+  counter += 1
 
-schedule.every().day.at("0:0").do(farm)
+schedule.every(1).seconds.do(job)
 
 while True:
     schedule.run_pending()
     time.sleep(1)
-
-
