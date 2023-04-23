@@ -13,7 +13,7 @@ def farm():
 
     os.system("git add README.md")
     os.system(f"git commit -m \"{date.year}/{date.month}/{date.day}\"")
-    os.system(f"git push origin master")
+    os.system(f"git push origin main")
     
     counter += 1
 
