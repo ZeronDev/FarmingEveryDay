@@ -11,7 +11,7 @@ def job():
   date = datetime.datetime.now()
 
   with open("./README.md", "a", encoding="utf-8") as readme:
-      readme.write(counter)
+      readme.write(str(counter))
 
   os.system("git add README.md")
   os.system(f"git commit -m \"{date.year}/{date.month}/{date.day}\"")
